@@ -9,17 +9,17 @@ from langchain.vectorstores import AzureSearch
 
 app = FastAPI()
 
-openai.api_base = os.getenv("OPENAI_API_BASE")  # Your Azure OpenAI resource's endpoint value.
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_base = "https://azure-openai-jim.openai.azure.com/"  # Your Azure OpenAI resource's endpoint value.
+openai.api_key = "8fb5614c2f804ed5aae9967f4c58b75e"
 openai.api_type = "azure"
 openai.api_version = "2023-05-15" 
 
-embeddings = OpenAIEmbeddings(deployment="demo-embedding", chunk_size=1)
+embeddings = OpenAIEmbeddings(deployment="text-embedding-search", chunk_size=1)
 
 # Connect to Azure Cognitive Search
-acs = AzureSearch(azure_search_endpoint=os.getenv('SEARCH_SERVICE_NAME'),
-                 azure_search_key=os.getenv('SEARCH_API_KEY'),
-                 index_name=os.getenv('SEARCH_INDEX_NAME'),
+acs = AzureSearch(azure_search_endpoint="https://azure-ai-search-jim.search.windows.net/",
+                 azure_search_key="HxInke3ysAdoHZhKqjAnK8yAy03OjRhzVrnb6wmpiiAzSeCWri74",
+                 index_name="demo-index",
                  embedding_function=embeddings.embed_query)
 
 class Body(BaseModel):
