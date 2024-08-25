@@ -2,7 +2,7 @@ name: Trigger auto deployment for demo-container
 
 env:
   AZURE_CONTAINER_APP_NAME: azure-container2
-  AZURE_GROUP_NAME: jim-llmops
+  AZURE_GROUP_NAME: azure-container2
 
 # When this action will be executed
 on:
